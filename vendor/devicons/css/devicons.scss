@@ -26,6 +26,14 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+
+.devicons-c:before {
+    content: url('/img/C_Logo.png'); /* Update with the actual path */
+}
+.devicons-cpp:before {
+    content: url('/img/cplusplus.svg'); /* Update with the actual path */
+}
+
 $devicons:	(git "\e602"),
 			(git_compare "\e628"),
 			(git_branch "\e625"),
@@ -217,7 +225,9 @@ $devicons:	(git "\e602"),
 			(redhat "\e6bb"),
 			(scriptcs "\e6bc"),
 			(sqllite "\e6c4"),
-			(vim "\e6c5");
+			(vim "\e6c5"),
+			(cpp "\e6c7"), // Add this line for C++
+			(c "\e6c6");
 
 @each $devicon in $devicons {
 	  $iconClass: nth($devicon, 1);
