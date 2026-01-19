@@ -16,7 +16,6 @@ function App() {
 
                 <footer className="bg-slate-900 text-slate-400 py-12 text-center text-sm">
                     <p>© {new Date().getFullYear()} Narayan Bhattarai. All rights reserved.</p>
-                    <p className="mt-2 text-slate-600">Built with React, Vite & Tailwind</p>
                 </footer>
             </main>
         </div>
