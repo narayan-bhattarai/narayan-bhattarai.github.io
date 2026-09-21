@@ -2,6 +2,7 @@
 <html lang="en" data-logo="merge">
 <head>
 <meta charset="UTF-8">
+<script>try{if(localStorage.getItem("nb-style")==="mono")document.documentElement.setAttribute("data-style","mono")}catch(e){}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Narayan Bhattarai — Backend Software Engineer</title>
 <meta name="description" content="Narayan Bhattarai, backend software engineer from Nepal building event-driven Java and .NET systems.">
@@ -320,6 +321,36 @@ html[data-logo="merge"] .mk[data-mk="merge"],html[data-logo="ridge"] .mk[data-mk
 .logo-switch button[aria-pressed="true"]{border-color:var(--accent)}
 
 .ring .dev,.dev{font-family:"Noto Sans Devanagari",var(--sans);letter-spacing:0;font-size:1.12em}
+
+/* ===== theme toggle ===== */
+.menu{align-items:center}
+.style-toggle{display:inline-flex;border:1.5px solid currentColor;border-radius:999px;padding:2px;gap:2px;color:#fff}
+.topbar.solid .style-toggle{color:var(--ink)}
+.style-toggle button{border:0;background:transparent;color:inherit;font:inherit;font-size:13px;font-weight:700;padding:6px 12px;border-radius:999px;cursor:pointer;min-height:32px}
+.style-toggle button[aria-pressed="true"]{background:#fff;color:#141A3A}
+.topbar.solid .style-toggle button[aria-pressed="true"]{background:var(--ink);color:var(--snow)}
+
+/* ===== black & white theme ===== */
+html[data-style="mono"]{
+  --night:#0A0A0A; --snow:#F7F7F7; --paper:#FFFFFF; --ink:#0A0A0A; --muted:#555555; --line:#DADADA;
+  --accent:#0A0A0A; --f-blue:#0A0A0A; --f-red:#0A0A0A; --f-green:#6B6B6B; --f-yellow:#DADADA; --f-white:#F7F7F7;
+  --dawn:#CFCFCF; --sun:#F2F2F2;
+}
+@media (prefers-color-scheme:dark){
+  html[data-style="mono"]:not([data-theme="light"]){ --snow:#0B0B0B; --paper:#161616; --ink:#F2F2F2; --muted:#A3A3A3; --line:#2C2C2C; --accent:#F2F2F2; --f-blue:#F2F2F2; --f-red:#F2F2F2; --f-green:#8A8A8A; --f-yellow:#3A3A3A; }
+}
+html[data-style="mono"] .hero{background:linear-gradient(180deg,#000 0%,#111 35%,#3A3A3A 62%,#9A9A9A 84%,#D6D6D6 100%)}
+html[data-style="mono"] .contact{background:linear-gradient(180deg,#0A0A0A 0%,#1E1E1E 45%,#6A6A6A 78%,#BDBDBD 100%)}
+html[data-style="mono"] .hero .layer, html[data-style="mono"] .hero .sun, html[data-style="mono"] .sky-glow,
+html[data-style="mono"] .contact-mtn, html[data-style="mono"] .projects, html[data-style="mono"] .dhaka,
+html[data-style="mono"] .portrait img, html[data-style="mono"] .mk, html[data-style="mono"] .cert-box img,
+html[data-style="mono"] .term, html[data-style="mono"] .term-btn, html[data-style="mono"] .kit .pack{filter:grayscale(1) contrast(1.06)}
+html[data-style="mono"] .ref.tag, html[data-style="mono"] .award{color:#0A0A0A;background:#DADADA}
+html[data-style="mono"] .ref.head{background:#0A0A0A;color:#fff}
+html[data-style="mono"] .commit .dot.head{box-shadow:0 0 0 6px rgba(120,120,120,.3)}
+html[data-style="mono"] .typed b{border-color:#fff}
+html[data-style="mono"] .mail{border-color:#fff}
+
 /* keyframes */
 
 @keyframes glow{to{opacity:1}}
@@ -347,6 +378,10 @@ html[data-logo="merge"] .mk[data-mk="merge"],html[data-logo="ridge"] .mk[data-mk
       <a href="#projects">Projects</a>
       <a href="#kit">Skills</a>
       <a class="keep" href="#contact">Contact</a>
+          <div class="style-toggle" role="group" aria-label="Color theme">
+        <button type="button" data-style-set="color" aria-pressed="true">Color</button>
+        <button type="button" data-style-set="mono" aria-pressed="false">B&amp;W</button>
+      </div>
     </div>
   </nav>
 </div>
@@ -704,6 +739,16 @@ html[data-logo="merge"] .mk[data-mk="merge"],html[data-logo="ridge"] .mk[data-mk
   addEventListener('keydown',function(e){ if(e.key==='`' && !document.getElementById('term').open){ e.preventDefault(); document.getElementById('term').showModal(); inp.focus(); } });
 
 
+
+
+  // ---- color / black & white toggle
+  function setStyle(v){
+    if(v==='mono')document.documentElement.setAttribute('data-style','mono'); else document.documentElement.removeAttribute('data-style');
+    document.querySelectorAll('[data-style-set]').forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.styleSet===v?'true':'false'); });
+    try{localStorage.setItem('nb-style',v);}catch(e){}
+  }
+  document.querySelectorAll('[data-style-set]').forEach(function(b){ b.addEventListener('click',function(){ setStyle(b.dataset.styleSet); }); });
+  setStyle(document.documentElement.getAttribute('data-style')==='mono'?'mono':'color');
 
   var top=document.getElementById('topbar'), hero=document.getElementById('top');
   var about=document.getElementById('about');
