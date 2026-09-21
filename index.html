@@ -351,6 +351,35 @@ html[data-style="mono"] .commit .dot.head{box-shadow:0 0 0 6px rgba(120,120,120,
 html[data-style="mono"] .typed b{border-color:#fff}
 html[data-style="mono"] .mail{border-color:#fff}
 
+
+/* ===== project cards v2 ===== */
+.c-kina{grid-column:span 4;background:linear-gradient(135deg,#2C6BD8,#1E2652 72%)}
+.c-bidhi{grid-column:span 2;background:#6A2D5C;border-color:#8A4379}
+.c-news,.c-kavya,.c-bagh{grid-column:span 2}
+.c-kavya{background:#2A2F63}
+.card{display:flex;flex-direction:column}
+.card .chips{margin-top:auto}
+.ptag{margin:0 0 8px!important;font-size:13px;font-weight:700;letter-spacing:.3px;color:#F2C230!important}
+.c-bagh .ptag{color:#fff!important}
+.card h3 .dev{font-size:.62em;font-weight:600;opacity:.85;margin-left:6px}
+.links{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;position:relative}
+.code-link{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:8px 14px;border-radius:999px;background:#fff;color:#141A3A;text-decoration:none;font-weight:700;font-size:14px}
+.code-link:hover{background:#F2C230}
+.research{margin-top:36px;border-top:1px solid #2E3972;padding-top:24px}
+.rtitle{font-weight:700;color:#F2C230;margin:0 0 12px}
+.research ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px 28px;color:#B6BEDF}
+.research b{display:block;color:#EEF1FA}
+@media (max-width:900px){.c-kina{grid-column:span 2}.c-bidhi,.c-news,.c-kavya,.c-bagh{grid-column:span 1}}
+@media (max-width:620px){.grid .card{grid-column:span 1}}
+.ring{animation-play-state:paused}
+.portrait:hover .ring{animation-play-state:running}
+
+
+.grid .card .head{padding-right:0}
+.grid .c-kina .head{padding-right:150px}
+.c-bagh .head .ptag,.c-bagh .head h3{padding-right:110px}
+@media (max-width:620px){.grid .c-kina .head{padding-right:0}.c-kina .art{opacity:.22}.c-kina .head .ptag,.c-kina .head h3{padding-right:120px}}
+
 /* keyframes */
 
 @keyframes glow{to{opacity:1}}
@@ -442,13 +471,9 @@ html[data-style="mono"] .mail{border-color:#fff}
         <div class="c-body">
           <p class="meta"><code>f7e2a19</code><span class="ref head">HEAD → main</span><span class="date">Aug 2026 – Present</span></p>
           <h3>Bank of America</h3>
-          <p class="role">Plano, Texas</p>
-          <ul>
-            <li>Driving the transformation of a monolithic application into independently deployable microservices.</li>
-            <li>Building backend services with Spring Boot and Oracle.</li>
-            <li>Focused on making backend systems robust, reliable and maintainable.</li>
-          </ul>
-          <ul class="chips"><li>Java</li><li>Spring Boot</li><li>Oracle</li><li>Microservices</li></ul>
+          <p class="role">Application Programmer III · Plano, Texas</p>
+          <p class="sub">Building and modernizing backend services in Java and Spring Boot.</p>
+          <ul class="chips"><li>Java</li><li>Spring Boot</li></ul>
         </div>
       </article>
 
@@ -536,20 +561,51 @@ html[data-style="mono"] .mail{border-color:#fff}
   <div class="wrap">
     <p class="kicker">Projects</p>
     <h2 class="sec-title">Featured work</h2>
-    <p class="sec-intro">Graduate projects across search, applied AI and one very Nepali board game.</p>
+    <p class="sec-intro">Things I have designed and built end to end: microservices, AI assistants, full-stack apps and one very Nepali board game. Every card links to the code.</p>
 
     <div class="grid">
-      <article class="card c-search">
+      <article class="card c-kina">
         <svg class="art" viewBox="0 0 170 170" aria-hidden="true">
-          <circle cx="92" cy="72" r="40" fill="none" stroke="#fff" stroke-width="8" opacity=".85"/>
-          <line x1="120" y1="102" x2="150" y2="134" stroke="#fff" stroke-width="12" stroke-linecap="round" opacity=".85"/>
-          <g fill="#F2C230"><circle cx="78" cy="62" r="5"><animate attributeName="r" values="3;6;3" dur="2s" repeatCount="indefinite"/></circle><circle cx="100" cy="80" r="4"><animate attributeName="r" values="5;2;5" dur="2.4s" repeatCount="indefinite"/></circle><circle cx="96" cy="58" r="3"/></g>
+          <g fill="none" stroke="#fff" stroke-width="5" opacity=".85"><circle cx="85" cy="85" r="16"/><circle cx="40" cy="45" r="11"/><circle cx="130" cy="45" r="11"/><circle cx="40" cy="125" r="11"/><circle cx="130" cy="125" r="11"/><path d="M73 74 49 53M97 74l24-21M73 96l-24 21M97 96l24 21"/></g>
+          <circle cx="85" cy="85" r="7" fill="#F2C230"><animate attributeName="r" values="5;9;5" dur="2.2s" repeatCount="indefinite"/></circle>
         </svg>
         <div class="head">
-          <h3>Hybrid semantic search</h3>
-          <p>A search engine blending BM25 keyword ranking with dense embeddings and vector similarity, evaluated with Precision@K, Recall, MAP and nDCG.</p>
+          <p class="ptag">E-commerce platform · Java</p>
+          <h3>KinaNow</h3>
+          <p>An Amazon-style shop built as event-driven microservices: auth, catalog, cart, pricing, orders, inventory, payments, reviews and notifications behind a Spring Cloud Gateway, with orders flowing through Kafka events.</p>
         </div>
-        <ul class="chips"><li>Python</li><li>BM25</li><li>Embeddings</li><li>Vector search</li></ul>
+        <ul class="chips"><li>Spring Boot 3</li><li>Spring Cloud</li><li>Kafka</li><li>PostgreSQL</li><li>MongoDB</li><li>Redis</li><li>Angular</li><li>Docker</li></ul>
+        <div class="links"><a class="code-link" href="https://github.com/narayan-bhattarai/KinaNow" target="_blank" rel="noopener">View code <span aria-hidden="true">→</span></a></div>
+      </article>
+
+      <article class="card c-bidhi">
+        <div class="head">
+          <p class="ptag">Legal AI · RAG</p>
+          <h3>BidhiBot <span class="dev" lang="ne">विधिBot</span></h3>
+          <p>A self-hosted legal assistant for Nepal's constitution and laws. Upload PDFs, ask in Nepali or English, and get answers grounded in the documents with page citations, running fully on a local LLM.</p>
+        </div>
+        <ul class="chips"><li>Spring Boot</li><li>pgvector</li><li>Ollama</li><li>RAG</li></ul>
+        <div class="links"><a class="code-link" href="https://github.com/narayan-bhattarai/BidhiBot" target="_blank" rel="noopener">View code <span aria-hidden="true">→</span></a></div>
+      </article>
+
+      <article class="card c-news">
+        <div class="head">
+          <p class="ptag">Full-stack news portal</p>
+          <h3>News Portal</h3>
+          <p>A complete news platform with an admin CMS, rich-text articles, categories, comments, Google and JWT sign-in, live chat over SignalR, and Nepali date support.</p>
+        </div>
+        <ul class="chips"><li>ASP.NET Core</li><li>EF Core</li><li>PostgreSQL</li><li>SignalR</li><li>React</li></ul>
+        <div class="links"><a class="code-link" href="https://github.com/narayan-bhattarai/news-portal-backend" target="_blank" rel="noopener">Backend <span aria-hidden="true">→</span></a><a class="code-link" href="https://github.com/narayan-bhattarai/news-portal" target="_blank" rel="noopener">Frontend <span aria-hidden="true">→</span></a></div>
+      </article>
+
+      <article class="card c-kavya">
+        <div class="head">
+          <p class="ptag">Audiobook creator · PWA</p>
+          <h3>KavyaSwar <span class="dev" lang="ne">काव्यस्वर</span></h3>
+          <p>Turns poetry and books into narrated audiobooks: upload a PDF, record a voiceover for each page in the browser, and share a synced reading experience.</p>
+        </div>
+        <ul class="chips"><li>React</li><li>TypeScript</li><li>Supabase</li><li>PWA</li></ul>
+        <div class="links"><a class="code-link" href="https://github.com/narayan-bhattarai/KavyaSwar" target="_blank" rel="noopener">View code <span aria-hidden="true">→</span></a></div>
       </article>
 
       <article class="card c-bagh">
@@ -559,35 +615,23 @@ html[data-style="mono"] .mail{border-color:#fff}
           <circle class="goat" cx="60" cy="60" r="6"/><circle class="goat" cx="60" cy="10" r="6" style="animation-delay:1.3s"/><circle class="goat" cx="10" cy="60" r="6" style="animation-delay:2.6s"/>
         </svg>
         <div class="head">
+          <p class="ptag">Reinforcement learning</p>
           <h3>BaghChal AI</h3>
-          <p>An agent for Nepal's tigers-and-goats game, trained with Q-Learning, SARSA and Expected SARSA.</p>
+          <p>Agents for Nepal's tigers-and-goats game trained through self-play with Q-Learning, SARSA, Expected SARSA and a PyTorch DQN.</p>
         </div>
-        <ul class="chips"><li>Python</li><li>RL</li></ul>
+        <ul class="chips"><li>Python</li><li>PyTorch</li><li>RL</li></ul>
+        <div class="links"><a class="code-link" href="https://github.com/narayan-bhattarai/BaghChal" target="_blank" rel="noopener">View code <span aria-hidden="true">→</span></a></div>
       </article>
+    </div>
 
-      <article class="card c-chat">
-        <div class="head">
-          <h3>Proteomics chatbot</h3>
-          <p>An expert assistant for scientific questions, running a local LLM behind a .NET API with an Angular front end.</p>
-        </div>
-        <ul class="chips"><li>.NET</li><li>Angular</li><li>LLM</li></ul>
-      </article>
-
-      <article class="card c-brain">
-        <div class="head">
-          <h3>Brain tumor segmentation</h3>
-          <p>Glioma segmentation on MRI scans with U-Net and Attention U-Net, tuned for high IoU.</p>
-        </div>
-        <ul class="chips"><li>U-Net</li><li>Computer vision</li></ul>
-      </article>
-
-      <article class="card c-gastro">
-        <div class="head">
-          <h3>GastroVision</h3>
-          <p>Deep-learning classification of endoscopic images, evaluated with AUROC and confusion matrices.</p>
-        </div>
-        <ul class="chips"><li>Deep learning</li><li>Medical AI</li></ul>
-      </article>
+    <div class="research">
+      <p class="rtitle">Also built during my master's</p>
+      <ul>
+        <li><b>Hybrid semantic search</b> BM25 + dense embeddings, evaluated with nDCG and MAP</li>
+        <li><b>Proteomics chatbot</b> .NET API + Angular + local LLM</li>
+        <li><b>Brain tumor segmentation</b> U-Net and Attention U-Net on MRI</li>
+        <li><b>GastroVision</b> endoscopic image classification</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -715,9 +759,9 @@ html[data-style="mono"] .mail{border-color:#fff}
   var C={
     help:function(){return '<span class="y">Available commands</span>\n  <span class="c">whoami</span>      who is Narayan\n  <span class="c">experience</span>  where I have worked\n  <span class="c">skills</span>      my stack\n  <span class="c">projects</span>    things I built\n  <span class="c">contact</span>     how to reach me\n  <span class="c">resume</span>      open my résumé\n  <span class="c">connect</span>     start a conversation\n  <span class="c">clear</span>       clear the screen';},
     whoami:function(){return 'Narayan Bhattarai — backend software engineer from Nepal 🇳🇵\n5+ years building event-driven Java and .NET systems.\nMS in Computer Information Science, University of South Dakota (2025).\nCurrently at Bank of America in Plano, Texas (since Aug 2026).';},
-    experience:function(){return '<span class="b">2026–now</span>   Bank of America                  <span class="d">Monolith → microservices · Spring Boot · Oracle</span>\n<span class="b">2021–2024</span>  Full Stack Developer @ Imark        <span class="d">Kafka · Spring Boot · Scala · K8s</span>\n<span class="b">2019–2021</span>  Software Developer @ Danphe Health  <span class="d">.NET · SOA · 30–40% perf gains</span>\n<span class="y">★ 2023</span>       Star Performer of the Year';},
+    experience:function(){return '<span class="b">2026–now</span>   Application Programmer III @ Bank of America  <span class="d">Java · Spring Boot</span>\n<span class="b">2021–2024</span>  Full Stack Developer @ Imark        <span class="d">Kafka · Spring Boot · Scala · K8s</span>\n<span class="b">2019–2021</span>  Software Developer @ Danphe Health  <span class="d">.NET · SOA · 30–40% perf gains</span>\n<span class="y">★ 2023</span>       Star Performer of the Year';},
     skills:function(){return '{\n  "languages": ["Java","C#","Python","Scala","SQL","TypeScript"],\n  "backend":   ["Spring Boot","Hibernate",".NET Core","ASP.NET Core"],\n  "messaging": ["Kafka","RabbitMQ","Apache Camel"],\n  "cloud":     ["Azure","AWS","Docker","Kubernetes","Jenkins"],\n  "data":      ["PostgreSQL","SQL Server","MongoDB","Elasticsearch"]\n}';},
-    projects:function(){return '• Hybrid semantic search   BM25 + dense embeddings\n• Proteomics chatbot       .NET + Angular + local LLM\n• Brain tumor segmentation U-Net / Attention U-Net\n• GastroVision            endoscopic image classifier\n• BaghChal AI             Q-Learning & SARSA agent';},
+    projects:function(){return '• KinaNow        Spring Boot + Kafka microservices e-commerce\n• BidhiBot       RAG legal assistant for Nepali law (pgvector + Ollama)\n• News Portal    ASP.NET Core + React, SignalR live chat\n• KavyaSwar      React audiobook creator for poetry\n• BaghChal AI    Q-Learning, SARSA, DQN\n\nAll code: <a class="c" href="https://github.com/narayan-bhattarai" target="_blank" rel="noopener">github.com/narayan-bhattarai</a>';},
     contact:function(){return 'email     <a class="c" href="mailto:er.narayanbhattarai@gmail.com">er.narayanbhattarai@gmail.com</a>\nlinkedin  <a class="c" href="https://www.linkedin.com/in/narayan-bhattarai/" target="_blank" rel="noopener">linkedin.com/in/narayan-bhattarai</a>\ngithub    <a class="c" href="https://github.com/narayan-bhattarai" target="_blank" rel="noopener">github.com/narayan-bhattarai</a>';},
     resume:function(){window.open('https://narayan-bhattarai.github.io/resume.pdf','_blank','noopener');return 'Opening résumé.pdf in a new tab…';},
     connect:function(){setTimeout(function(){try{window.open('mailto:er.narayanbhattarai@gmail.com?subject=Hello%20Narayan','_top');}catch(e){}},900);return '<span class="c">✔ Producing event "hello" to topic inbox…</span>\n<span class="c">✔ Acknowledged by partition 0, offset 1</span>\nOpening your email app… If nothing opens, email me at <a class="c" href="mailto:er.narayanbhattarai@gmail.com?subject=Hello%20Narayan">er.narayanbhattarai@gmail.com</a>';},
